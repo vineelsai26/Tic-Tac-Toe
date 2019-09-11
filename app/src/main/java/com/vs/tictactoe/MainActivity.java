@@ -41,15 +41,15 @@ public class MainActivity extends AppCompatActivity {
                 .monitor();
         AppRate.showRateDialogIfMeetsConditions(this);
 
-        btn1 = findViewById(R.id.btn1);
-        btn2 = findViewById(R.id.btn2);
-        btn3 = findViewById(R.id.btn3);
-        btn4 = findViewById(R.id.btn4);
-        btn5 = findViewById(R.id.btn5);
-        btn6 = findViewById(R.id.btn6);
-        btn7 = findViewById(R.id.btn7);
-        btn8 = findViewById(R.id.btn8);
-        btn9 = findViewById(R.id.btn9);
+        btn1 = findViewById(R.id.bt1);
+        btn2 = findViewById(R.id.bt2);
+        btn3 = findViewById(R.id.bt3);
+        btn4 = findViewById(R.id.bt4);
+        btn5 = findViewById(R.id.bt5);
+        btn6 = findViewById(R.id.bt6);
+        btn7 = findViewById(R.id.bt7);
+        btn8 = findViewById(R.id.bt8);
+        btn9 = findViewById(R.id.bt9);
         txt1 = findViewById(R.id.text_view_p1);
         txt2 = findViewById(R.id.text_view_p2);
         btnreset = findViewById(R.id.btnreset);
