@@ -32,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         AppRate.with(this)
                 .setInstallDays(3)
                 .setLaunchTimes(3)
@@ -298,5 +298,4 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-
 }
