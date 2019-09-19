@@ -27,12 +27,13 @@ public class MainActivity extends AppCompatActivity {
     public int count = 0;
     public int X,Y = 0;
     public String p1,p2;
+    public String initp1,initp2;
+    public String stat1,stat2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         AppRate.with(this)
                 .setInstallDays(3)
@@ -62,8 +63,10 @@ public class MainActivity extends AppCompatActivity {
         if (p2.equals("") || p2.equals("Player 2")){
             p2 = "Player 2";
         }
-        txt1.setText(p1 + ": 0");
-        txt2.setText(p2 + ": 0");
+        initp1 = p1 + ": 0";
+        initp2 = p2 + ": 0";
+        txt1.setText(initp1);
+        txt2.setText(initp2);
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -252,13 +255,15 @@ public class MainActivity extends AppCompatActivity {
         if ((btn1.getText().equals(btn2.getText()) && btn2.getText().equals(btn3.getText()) && btn3.getText().equals("X")) || (btn4.getText().equals(btn5.getText()) && btn5.getText().equals(btn6.getText()) && btn6.getText().equals("X")) || (btn7.getText().equals(btn8.getText()) && btn8.getText().equals(btn9.getText()) && btn9.getText().equals("X")) || (btn1.getText().equals(btn4.getText()) && btn4.getText().equals(btn7.getText()) && btn7.getText().equals("X")) || (btn2.getText().equals(btn5.getText()) && btn5.getText().equals(btn8.getText()) && btn8.getText().equals("X")) || (btn3.getText().equals(btn6.getText()) && btn6.getText().equals(btn7.getText()) && btn7.getText().equals("X")) || (btn1.getText().equals(btn5.getText()) && btn5.getText().equals(btn9.getText()) && btn9.getText().equals("X")) || (btn3.getText().equals(btn5.getText()) && btn5.getText().equals(btn7.getText()) && btn7.getText().equals("X"))) {
             X++;
             Toast.makeText(this, p1 + " Won!", Toast.LENGTH_SHORT).show();
-            txt1.setText(p1 + ": " + X);
+            stat1 = p1 + ": " + X;
+            txt1.setText(stat1);
             Clear();
         }
         if ((btn1.getText().equals(btn2.getText()) && btn2.getText().equals(btn3.getText()) && btn3.getText().equals("O")) || (btn4.getText().equals(btn5.getText()) && btn5.getText().equals(btn6.getText()) && btn6.getText().equals("O")) || (btn7.getText().equals(btn8.getText()) && btn8.getText().equals(btn9.getText()) && btn9.getText().equals("O")) || (btn1.getText().equals(btn4.getText()) && btn4.getText().equals(btn7.getText()) && btn7.getText().equals("O")) || (btn2.getText().equals(btn5.getText()) && btn5.getText().equals(btn8.getText()) && btn8.getText().equals("O")) || (btn3.getText().equals(btn6.getText()) && btn6.getText().equals(btn7.getText()) && btn7.getText().equals("O")) || (btn1.getText().equals(btn5.getText()) && btn5.getText().equals(btn9.getText()) && btn9.getText().equals("O")) || (btn3.getText().equals(btn5.getText()) && btn5.getText().equals(btn7.getText()) && btn7.getText().equals("O"))) {
             Y++;
             Toast.makeText(this, p2 + " Won!", Toast.LENGTH_SHORT).show();
-            txt2.setText(p2 + ": " + Y);
+            stat2 = p2 + ": " + Y;
+            txt2.setText(stat2);
             Clear();
         }
     }
@@ -273,8 +278,8 @@ public class MainActivity extends AppCompatActivity {
         btn8.setText("");
         btn9.setText("");
         count = 0;
-        txt1.setText(p1 + ": 0");
-        txt2.setText(p2 + ": 0");
+        txt1.setText(initp1);
+        txt2.setText(initp2);
         P1 = true;
         X = 0;
         Y = 0;
