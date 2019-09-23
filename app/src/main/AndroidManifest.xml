@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.vs.tictactoe">
 
     <dist:module dist:instant="true" />
@@ -11,7 +12,9 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/img"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:fullBackupContent=""
+        tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".PlayerNameActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
