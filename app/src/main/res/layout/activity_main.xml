@@ -38,7 +38,20 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:background="@android:color/background_light"
+            android:contentDescription="reset"
             app:srcCompat="@drawable/ic_refresh_black_24dp" />
+
+        <Button
+            android:id="@+id/btnclear"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginEnd="-1dp"
+            android:layout_marginRight="0dp"
+            android:layout_toStartOf="@+id/btnreset"
+            android:layout_toLeftOf="@+id/btnreset"
+            android:background="@android:color/background_light"
+            android:text="C"
+            android:textSize="50sp" />
 
     </RelativeLayout>
 

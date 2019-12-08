@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btn8;
     private Button btn9;
     public ImageButton btnreset;
+    public Button btnclear;
     public TextView txt1;
     public TextView txt2;
     public boolean P1,P2;
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         txt1 = findViewById(R.id.text_view_p1);
         txt2 = findViewById(R.id.text_view_p2);
         btnreset = findViewById(R.id.btnreset);
+        btnclear = findViewById(R.id.btnclear);
         P1 = true;
         p1 = PlayerNameActivity.p1.getText().toString();
         p2 = PlayerNameActivity.p2.getText().toString();
@@ -242,6 +244,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Reset();
+            }
+        });
+        btnclear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Clear();
             }
         });
     }
