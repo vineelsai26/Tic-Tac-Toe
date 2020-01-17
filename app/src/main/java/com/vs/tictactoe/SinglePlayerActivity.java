@@ -8,6 +8,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import java.util.Random;
 import hotchemi.android.rate.AppRate;
 
 public class SinglePlayerActivity extends AppCompatActivity {
@@ -26,6 +27,7 @@ public class SinglePlayerActivity extends AppCompatActivity {
     public TextView txt2;
     public boolean P1,P2;
     public int count = 0;
+    public int num;
     public int X,Y = 0;
     public String p,comp;
     public String initp,initcomp;
@@ -74,12 +76,7 @@ public class SinglePlayerActivity extends AppCompatActivity {
                     P1 = false;
                     P2 = true;
                     count++;
-                }
-                else if (btn1.getText().equals("")){
-                    btn1.setText("O");
-                    P2 = false;
-                    P1 = true;
-                    count++;
+                    computer();
                 }
                 win();
                 Draw();
@@ -93,12 +90,7 @@ public class SinglePlayerActivity extends AppCompatActivity {
                     P1 = false;
                     P2 = true;
                     count++;
-                }
-                if (P2 && btn2.getText().equals("")){
-                    btn2.setText("O");
-                    P2 = false;
-                    P1 = true;
-                    count++;
+                    computer();
                 }
                 win();
                 Draw();
@@ -112,12 +104,7 @@ public class SinglePlayerActivity extends AppCompatActivity {
                     P1 = false;
                     P2 = true;
                     count++;
-                }
-                if (P2 && btn3.getText().equals("")){
-                    btn3.setText("O");
-                    P2 = false;
-                    P1 = true;
-                    count++;
+                    computer();
                 }
                 win();
                 Draw();
@@ -131,12 +118,7 @@ public class SinglePlayerActivity extends AppCompatActivity {
                     P1 = false;
                     P2 = true;
                     count++;
-                }
-                if (P2 && btn4.getText().equals("")){
-                    btn4.setText("O");
-                    P2 = false;
-                    P1 = true;
-                    count++;
+                    computer();
                 }
                 win();
                 Draw();
@@ -150,12 +132,7 @@ public class SinglePlayerActivity extends AppCompatActivity {
                     P1 = false;
                     P2 = true;
                     count++;
-                }
-                if (P2 && btn5.getText().equals("")){
-                    btn5.setText("O");
-                    P2 = false;
-                    P1 = true;
-                    count++;
+                    computer();
                 }
                 win();
                 Draw();
@@ -169,12 +146,7 @@ public class SinglePlayerActivity extends AppCompatActivity {
                     P1 = false;
                     P2 = true;
                     count++;
-                }
-                if (P2 && btn6.getText().equals("")){
-                    btn6.setText("O");
-                    P2 = false;
-                    P1 = true;
-                    count++;
+                    computer();
                 }
                 win();
                 Draw();
@@ -188,12 +160,7 @@ public class SinglePlayerActivity extends AppCompatActivity {
                     P1 = false;
                     P2 = true;
                     count++;
-                }
-                if (P2 && btn7.getText().equals("")){
-                    btn7.setText("O");
-                    P2 = false;
-                    P1 = true;
-                    count++;
+                    computer();
                 }
                 win();
                 Draw();
@@ -207,12 +174,7 @@ public class SinglePlayerActivity extends AppCompatActivity {
                     P1 = false;
                     P2 = true;
                     count++;
-                }
-                if (P2 && btn8.getText().equals("")){
-                    btn8.setText("O");
-                    P2 = false;
-                    P1 = true;
-                    count++;
+                    computer();
                 }
                 win();
                 Draw();
@@ -226,12 +188,7 @@ public class SinglePlayerActivity extends AppCompatActivity {
                     P1 = false;
                     P2 = true;
                     count++;
-                }
-                if (P2 && btn9.getText().equals("")){
-                    btn9.setText("O");
-                    P2 = false;
-                    P1 = true;
-                    count++;
+                    computer();
                 }
                 win();
                 Draw();
@@ -249,6 +206,107 @@ public class SinglePlayerActivity extends AppCompatActivity {
                 Clear();
             }
         });
+    }
+    private void computer() {
+        if (P2){
+            rand();
+            switch (num) {
+                case 1:
+                    if (btn1.getText().equals("")){
+                        btn1.setText("O");
+                        P1 =true;
+                        count++;
+                    }
+                    else if (count < 9) {
+                        computer();
+                    }
+                    break;
+                case 2:
+                    if (btn2.getText().equals("")){
+                        btn2.setText("O");
+                        P1 =true;
+                        count++;
+                    }
+                    else if (count < 9) {
+                        computer();
+                    }
+                    break;
+                case 3:
+                    if (btn3.getText().equals("")){
+                        btn3.setText("O");
+                        P1 =true;
+                        count++;
+                    }
+                    else if (count < 9) {
+                        computer();
+                    }
+                    break;
+                case 4:
+                    if (btn4.getText().equals("")){
+                        btn4.setText("O");
+                        P1 =true;
+                        count++;
+                    }
+                    else if (count < 9) {
+                        computer();
+                    }
+                    break;
+                case 5:
+                    if (btn5.getText().equals("")){
+                        btn5.setText("O");
+                        P1 =true;
+                        count++;
+                    }
+                    else if (count < 9) {
+                        computer();
+                    }
+                    break;
+                case 6:
+                    if (btn6.getText().equals("")){
+                        btn6.setText("O");
+                        P1 =true;
+                        count++;
+                    }
+                    else if (count < 9) {
+                        computer();
+                    }
+                    break;
+                case 7:
+                    if (btn7.getText().equals("")){
+                        btn7.setText("O");
+                        P1 =true;
+                        count++;
+                    }
+                    else if (count < 9) {
+                        computer();
+                    }
+                    break;
+                case 8:
+                    if (btn8.getText().equals("")){
+                        btn8.setText("O");
+                        P1 =true;
+                        count++;
+                    }
+                    else if (count < 9) {
+                        computer();
+                    }
+                    break;
+                case 9:
+                    if (btn9.getText().equals("")){
+                        btn9.setText("O");
+                        P1 =true;
+                        count++;
+                    }
+                    else if (count < 9) {
+                        computer();
+                    }
+                    break;
+            }
+        }
+    }
+    private void rand() {
+        Random random = new Random();
+        num = random.nextInt(9)+1;
     }
     private void Draw() {
         if (count == 9){
