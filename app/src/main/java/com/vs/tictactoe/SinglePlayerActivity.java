@@ -10,7 +10,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import hotchemi.android.rate.AppRate;
 
-public class MainActivity extends AppCompatActivity {
+public class SinglePlayerActivity extends AppCompatActivity {
     private Button btn1;
     private Button btn2;
     private Button btn3;
@@ -27,14 +27,14 @@ public class MainActivity extends AppCompatActivity {
     public boolean P1,P2;
     public int count = 0;
     public int X,Y = 0;
-    public String p1,p2;
-    public String initp1,initp2;
+    public String p,comp;
+    public String initp,initcomp;
     public String stat1,stat2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_single_player);
 
         AppRate.with(this)
                 .setInstallDays(3)
@@ -57,18 +57,15 @@ public class MainActivity extends AppCompatActivity {
         btnreset = findViewById(R.id.btnreset);
         btnclear = findViewById(R.id.btnclear);
         P1 = true;
-        p1 = PlayerNameActivity.p1.getText().toString();
-        p2 = PlayerNameActivity.p2.getText().toString();
-        if (p1.equals("") || p1.equals("Player 1")){
-            p1 = "Player 1";
+        p = PlayerNameActivity.p.getText().toString();
+        if (p.equals("") || p.equals("Player")){
+            p = "Player ";
         }
-        if (p2.equals("") || p2.equals("Player 2")){
-            p2 = "Player 2";
-        }
-        initp1 = p1 + " : 0";
-        initp2 = p2 + " : 0";
-        txt1.setText(initp1);
-        txt2.setText(initp2);
+        comp = "Computer ";
+        initp = p + ": 0";
+        initcomp = comp + ": 0";
+        txt1.setText(initp);
+        txt2.setText(initcomp);
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -262,15 +259,15 @@ public class MainActivity extends AppCompatActivity {
     private void win() {
         if ((btn1.getText().equals(btn2.getText()) && btn2.getText().equals(btn3.getText()) && btn3.getText().equals("X")) || (btn4.getText().equals(btn5.getText()) && btn5.getText().equals(btn6.getText()) && btn6.getText().equals("X")) || (btn7.getText().equals(btn8.getText()) && btn8.getText().equals(btn9.getText()) && btn9.getText().equals("X")) || (btn1.getText().equals(btn4.getText()) && btn4.getText().equals(btn7.getText()) && btn7.getText().equals("X")) || (btn2.getText().equals(btn5.getText()) && btn5.getText().equals(btn8.getText()) && btn8.getText().equals("X")) || (btn3.getText().equals(btn6.getText()) && btn6.getText().equals(btn9.getText()) && btn9.getText().equals("X")) || (btn1.getText().equals(btn5.getText()) && btn5.getText().equals(btn9.getText()) && btn9.getText().equals("X")) || (btn3.getText().equals(btn5.getText()) && btn5.getText().equals(btn7.getText()) && btn7.getText().equals("X"))) {
             X++;
-            Toast.makeText(this, p1 + " Won!", Toast.LENGTH_SHORT).show();
-            stat1 = p1 + ": " + X;
+            Toast.makeText(this, p + " Won!", Toast.LENGTH_SHORT).show();
+            stat1 = p + ": " + X;
             txt1.setText(stat1);
             Clear();
         }
         if ((btn1.getText().equals(btn2.getText()) && btn2.getText().equals(btn3.getText()) && btn3.getText().equals("O")) || (btn4.getText().equals(btn5.getText()) && btn5.getText().equals(btn6.getText()) && btn6.getText().equals("O")) || (btn7.getText().equals(btn8.getText()) && btn8.getText().equals(btn9.getText()) && btn9.getText().equals("O")) || (btn1.getText().equals(btn4.getText()) && btn4.getText().equals(btn7.getText()) && btn7.getText().equals("O")) || (btn2.getText().equals(btn5.getText()) && btn5.getText().equals(btn8.getText()) && btn8.getText().equals("O")) || (btn3.getText().equals(btn6.getText()) && btn6.getText().equals(btn9.getText()) && btn9.getText().equals("O")) || (btn1.getText().equals(btn5.getText()) && btn5.getText().equals(btn9.getText()) && btn9.getText().equals("O")) || (btn3.getText().equals(btn5.getText()) && btn5.getText().equals(btn7.getText()) && btn7.getText().equals("O"))) {
             Y++;
-            Toast.makeText(this, p2 + " Won!", Toast.LENGTH_SHORT).show();
-            stat2 = p2 + ": " + Y;
+            Toast.makeText(this, "Computer" + " Won!", Toast.LENGTH_SHORT).show();
+            stat2 =  "Computer : " + Y;
             txt2.setText(stat2);
             Clear();
         }
@@ -286,8 +283,8 @@ public class MainActivity extends AppCompatActivity {
         btn8.setText("");
         btn9.setText("");
         count = 0;
-        txt1.setText(initp1);
-        txt2.setText(initp2);
+        txt1.setText(initp);
+        txt2.setText(initcomp);
         P1 = true;
         X = 0;
         Y = 0;
@@ -307,7 +304,7 @@ public class MainActivity extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(MainActivity.this,PlayerNameActivity.class);
+        Intent intent = new Intent(SinglePlayerActivity.this,PlayerNameActivity.class);
         startActivity(intent);
         finish();
     }
