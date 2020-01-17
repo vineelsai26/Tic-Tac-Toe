@@ -8,6 +8,19 @@
     tools:context="com.vs.tictactoe.PlayerNameActivity">
 
     <EditText
+        android:id="@+id/p"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@+id/imgbtn"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="50dp"
+        android:ems="10"
+        android:hint="Enter Player Name"
+        android:inputType="textPersonName"
+        android:textSize="24sp" />
+
+    <EditText
         android:id="@+id/p2"
         android:layout_width="match_parent"
         android:layout_height="70dp"
@@ -27,20 +40,34 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="2dp"
         android:layout_marginLeft="0dp"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="100dp"
         android:ems="10"
         android:hint="Enter Player 1 Name"
         android:inputType="textPersonName"
         android:textSize="24sp" />
 
-    <ImageButton
+    <Button
         android:id="@+id/imgbtn"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
         android:layout_below="@+id/p2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:background="@android:color/background_light"
-        app:srcCompat="@drawable/ic_play_arrow_black_24dp" />
+        android:text="Multi Player"
+        android:textAllCaps="false"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/SinglePlayer"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/p"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:background="@android:color/background_light"
+        android:text="Single Player"
+        android:textAllCaps="false"
+        android:textSize="24sp" />
 
 </RelativeLayout>
