@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/background_light"
     android:keepScreenOn="true"
     android:orientation="vertical"
     tools:context="com.vs.tictactoe.MainActivity">
@@ -12,14 +11,14 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/background_light">
+        android:background="@android:color/transparent">
 
         <TextView
             android:id="@+id/text_view_p1"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:text="Player 1 : 0"
-            android:textColor="@android:color/background_dark"
+            android:textColor="?android:attr/colorForeground"
             android:textSize="30sp" />
 
         <TextView
@@ -28,7 +27,7 @@
             android:layout_height="40dp"
             android:layout_below="@+id/text_view_p1"
             android:text="Player 2 : 0"
-            android:textColor="@android:color/background_dark"
+            android:textColor="?android:attr/colorForeground"
             android:textSize="30sp" />
 
         <ImageButton
@@ -38,7 +37,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:background="@android:color/background_light"
+            android:background="@android:color/transparent"
             android:contentDescription="reset"
             app:srcCompat="@drawable/ic_refresh_black_24dp" />
 
@@ -50,8 +49,9 @@
             android:layout_marginRight="0dp"
             android:layout_toStartOf="@+id/btnreset"
             android:layout_toLeftOf="@+id/btnreset"
-            android:background="@android:color/background_light"
+            android:background="@android:color/transparent"
             android:text="C"
+            android:textColor="?android:attr/colorForeground"
             android:textSize="50sp" />
 
     </RelativeLayout>
@@ -139,5 +139,12 @@
             android:textSize="60sp" />
 
     </LinearLayout>
+
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111" />
 
 </LinearLayout>

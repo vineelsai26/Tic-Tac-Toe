@@ -7,10 +7,28 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+
 import hotchemi.android.rate.AppRate;
 
 public class MainActivity extends AppCompatActivity {
+    public ImageButton btnreset;
+    public Button btnclear;
+    public TextView txt1;
+    public TextView txt2;
+    public boolean P1, P2;
+    public int count = 0;
+    public int X, Y = 0;
+    public String p1, p2;
+    public String initp1, initp2;
+    public String stat1, stat2;
     private Button btn1;
     private Button btn2;
     private Button btn3;
@@ -20,16 +38,6 @@ public class MainActivity extends AppCompatActivity {
     private Button btn7;
     private Button btn8;
     private Button btn9;
-    public ImageButton btnreset;
-    public Button btnclear;
-    public TextView txt1;
-    public TextView txt2;
-    public boolean P1,P2;
-    public int count = 0;
-    public int X,Y = 0;
-    public String p1,p2;
-    public String initp1,initp2;
-    public String stat1,stat2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +50,16 @@ public class MainActivity extends AppCompatActivity {
                 .setRemindInterval(3)
                 .monitor();
         AppRate.showRateDialogIfMeetsConditions(this);
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+        AdView mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
 
         btn1 = findViewById(R.id.bt1);
         btn2 = findViewById(R.id.bt2);
@@ -59,10 +77,10 @@ public class MainActivity extends AppCompatActivity {
         P1 = true;
         p1 = PlayerNameActivity.p1.getText().toString();
         p2 = PlayerNameActivity.p2.getText().toString();
-        if (p1.equals("") || p1.equals("Player 1")){
+        if (p1.equals("") || p1.equals("Player 1")) {
             p1 = "Player 1";
         }
-        if (p2.equals("") || p2.equals("Player 2")){
+        if (p2.equals("") || p2.equals("Player 2")) {
             p2 = "Player 2";
         }
         initp1 = p1 + " : 0";
@@ -72,13 +90,12 @@ public class MainActivity extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (P1 && btn1.getText().equals("")){
+                if (P1 && btn1.getText().equals("")) {
                     btn1.setText("X");
                     P1 = false;
                     P2 = true;
                     count++;
-                }
-                else if (btn1.getText().equals("")){
+                } else if (btn1.getText().equals("")) {
                     btn1.setText("O");
                     P2 = false;
                     P1 = true;
@@ -91,13 +108,13 @@ public class MainActivity extends AppCompatActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (P1 && btn2.getText().equals("")){
+                if (P1 && btn2.getText().equals("")) {
                     btn2.setText("X");
                     P1 = false;
                     P2 = true;
                     count++;
                 }
-                if (P2 && btn2.getText().equals("")){
+                if (P2 && btn2.getText().equals("")) {
                     btn2.setText("O");
                     P2 = false;
                     P1 = true;
@@ -110,13 +127,13 @@ public class MainActivity extends AppCompatActivity {
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (P1 && btn3.getText().equals("")){
+                if (P1 && btn3.getText().equals("")) {
                     btn3.setText("X");
                     P1 = false;
                     P2 = true;
                     count++;
                 }
-                if (P2 && btn3.getText().equals("")){
+                if (P2 && btn3.getText().equals("")) {
                     btn3.setText("O");
                     P2 = false;
                     P1 = true;
@@ -129,13 +146,13 @@ public class MainActivity extends AppCompatActivity {
         btn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (P1 && btn4.getText().equals("")){
+                if (P1 && btn4.getText().equals("")) {
                     btn4.setText("X");
                     P1 = false;
                     P2 = true;
                     count++;
                 }
-                if (P2 && btn4.getText().equals("")){
+                if (P2 && btn4.getText().equals("")) {
                     btn4.setText("O");
                     P2 = false;
                     P1 = true;
@@ -148,13 +165,13 @@ public class MainActivity extends AppCompatActivity {
         btn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (P1 && btn5.getText().equals("")){
+                if (P1 && btn5.getText().equals("")) {
                     btn5.setText("X");
                     P1 = false;
                     P2 = true;
                     count++;
                 }
-                if (P2 && btn5.getText().equals("")){
+                if (P2 && btn5.getText().equals("")) {
                     btn5.setText("O");
                     P2 = false;
                     P1 = true;
@@ -167,13 +184,13 @@ public class MainActivity extends AppCompatActivity {
         btn6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (P1 && btn6.getText().equals("")){
+                if (P1 && btn6.getText().equals("")) {
                     btn6.setText("X");
                     P1 = false;
                     P2 = true;
                     count++;
                 }
-                if (P2 && btn6.getText().equals("")){
+                if (P2 && btn6.getText().equals("")) {
                     btn6.setText("O");
                     P2 = false;
                     P1 = true;
@@ -186,13 +203,13 @@ public class MainActivity extends AppCompatActivity {
         btn7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (P1 && btn7.getText().equals("")){
+                if (P1 && btn7.getText().equals("")) {
                     btn7.setText("X");
                     P1 = false;
                     P2 = true;
                     count++;
                 }
-                if (P2 && btn7.getText().equals("")){
+                if (P2 && btn7.getText().equals("")) {
                     btn7.setText("O");
                     P2 = false;
                     P1 = true;
@@ -205,13 +222,13 @@ public class MainActivity extends AppCompatActivity {
         btn8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (P1 && btn8.getText().equals("")){
+                if (P1 && btn8.getText().equals("")) {
                     btn8.setText("X");
                     P1 = false;
                     P2 = true;
                     count++;
                 }
-                if (P2 && btn8.getText().equals("")){
+                if (P2 && btn8.getText().equals("")) {
                     btn8.setText("O");
                     P2 = false;
                     P1 = true;
@@ -224,13 +241,13 @@ public class MainActivity extends AppCompatActivity {
         btn9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (P1 && btn9.getText().equals("")){
+                if (P1 && btn9.getText().equals("")) {
                     btn9.setText("X");
                     P1 = false;
                     P2 = true;
                     count++;
                 }
-                if (P2 && btn9.getText().equals("")){
+                if (P2 && btn9.getText().equals("")) {
                     btn9.setText("O");
                     P2 = false;
                     P1 = true;
@@ -253,12 +270,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     private void Draw() {
-        if (count == 9){
-            Toast.makeText(this,"Draw",Toast.LENGTH_SHORT).show();
+        if (count == 9) {
+            Toast.makeText(this, "Draw", Toast.LENGTH_SHORT).show();
             Clear();
         }
     }
+
     private void win() {
         if ((btn1.getText().equals(btn2.getText()) && btn2.getText().equals(btn3.getText()) && btn3.getText().equals("X")) || (btn4.getText().equals(btn5.getText()) && btn5.getText().equals(btn6.getText()) && btn6.getText().equals("X")) || (btn7.getText().equals(btn8.getText()) && btn8.getText().equals(btn9.getText()) && btn9.getText().equals("X")) || (btn1.getText().equals(btn4.getText()) && btn4.getText().equals(btn7.getText()) && btn7.getText().equals("X")) || (btn2.getText().equals(btn5.getText()) && btn5.getText().equals(btn8.getText()) && btn8.getText().equals("X")) || (btn3.getText().equals(btn6.getText()) && btn6.getText().equals(btn9.getText()) && btn9.getText().equals("X")) || (btn1.getText().equals(btn5.getText()) && btn5.getText().equals(btn9.getText()) && btn9.getText().equals("X")) || (btn3.getText().equals(btn5.getText()) && btn5.getText().equals(btn7.getText()) && btn7.getText().equals("X"))) {
             X++;
@@ -275,6 +294,7 @@ public class MainActivity extends AppCompatActivity {
             Clear();
         }
     }
+
     private void Reset() {
         btn1.setText("");
         btn2.setText("");
@@ -292,6 +312,7 @@ public class MainActivity extends AppCompatActivity {
         X = 0;
         Y = 0;
     }
+
     private void Clear() {
         btn1.setText("");
         btn2.setText("");
@@ -305,9 +326,10 @@ public class MainActivity extends AppCompatActivity {
         count = 0;
         P1 = true;
     }
+
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(MainActivity.this,PlayerNameActivity.class);
+        Intent intent = new Intent(MainActivity.this, PlayerNameActivity.class);
         startActivity(intent);
         finish();
     }
