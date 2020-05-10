@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/background_light"
-    tools:context="com.vs.tictactoe.PlayerNameActivity">
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
 
     <EditText
         android:id="@+id/p"
@@ -28,8 +28,8 @@
         android:layout_marginStart="0dp"
         android:layout_marginLeft="0dp"
         android:layout_marginTop="0dp"
-        android:hint="Enter Player 2 Name"
         android:ems="10"
+        android:hint="Enter Player 2 Name"
         android:inputType="textPersonName"
         android:textSize="24sp" />
 
@@ -53,9 +53,10 @@
         android:layout_below="@+id/p2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
-        android:background="@android:color/background_light"
+        android:background="@drawable/button_round"
         android:text="Multi Player"
         android:textAllCaps="false"
+        android:textColor="@android:color/background_light"
         android:textSize="24sp" />
 
     <Button
@@ -65,9 +66,17 @@
         android:layout_below="@+id/p"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
-        android:background="@android:color/background_light"
+        android:background="@drawable/button_round"
         android:text="Single Player"
         android:textAllCaps="false"
+        android:textColor="@android:color/background_light"
         android:textSize="24sp" />
 
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111" />
 </RelativeLayout>

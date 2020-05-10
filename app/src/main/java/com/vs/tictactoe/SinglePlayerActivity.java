@@ -7,31 +7,28 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import java.util.Random;
+
 import hotchemi.android.rate.AppRate;
 
 public class SinglePlayerActivity extends AppCompatActivity {
-    private Button btn1;
-    private Button btn2;
-    private Button btn3;
-    private Button btn4;
-    private Button btn5;
-    private Button btn6;
-    private Button btn7;
-    private Button btn8;
-    private Button btn9;
     public ImageButton btnreset;
     public Button btnclear;
     public TextView txt1;
     public TextView txt2;
-    public boolean P1,P2;
+    public boolean P1, P2;
     public int count = 0;
-    public int num;
-    public int X,Y = 0;
-    public String p,comp;
-    public String initp,initcomp;
-    public String stat1,stat2;
+    public int X, Y = 0;
+    public String p, comp;
+    public String initp, initcomp;
+    public String stat1, stat2;
+    private Button[] btn = new Button[9];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,22 +42,37 @@ public class SinglePlayerActivity extends AppCompatActivity {
                 .monitor();
         AppRate.showRateDialogIfMeetsConditions(this);
 
-        btn1 = findViewById(R.id.bt1);
-        btn2 = findViewById(R.id.bt2);
-        btn3 = findViewById(R.id.bt3);
-        btn4 = findViewById(R.id.bt4);
-        btn5 = findViewById(R.id.bt5);
-        btn6 = findViewById(R.id.bt6);
-        btn7 = findViewById(R.id.bt7);
-        btn8 = findViewById(R.id.bt8);
-        btn9 = findViewById(R.id.bt9);
+        AdView mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+        P1 = true;
+        for (int i = 0; i < 9; i++) {
+            String ButtonId = "bt" + i;
+            int resId = getResources().getIdentifier(ButtonId, "id", getPackageName());
+            btn[i] = findViewById(resId);
+            final int finalI = i;
+            btn[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (P1 && btn[finalI].getText().equals("")) {
+                        btn[finalI].setText("X");
+                        P1 = false;
+                        P2 = true;
+                        count++;
+                        win();
+                        Draw();
+                        computer();
+                    }
+                }
+            });
+        }
+
         txt1 = findViewById(R.id.text_view_p1);
         txt2 = findViewById(R.id.text_view_p2);
         btnreset = findViewById(R.id.btnreset);
         btnclear = findViewById(R.id.btnclear);
-        P1 = true;
         p = PlayerNameActivity.p.getText().toString();
-        if (p.equals("") || p.equals("Player")){
+        if (p.equals("") || p.equals("Player")) {
             p = "Player ";
         }
         comp = "Computer ";
@@ -68,132 +80,6 @@ public class SinglePlayerActivity extends AppCompatActivity {
         initcomp = comp + ": 0";
         txt1.setText(initp);
         txt2.setText(initcomp);
-        btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (P1 && btn1.getText().equals("")){
-                    btn1.setText("X");
-                    P1 = false;
-                    P2 = true;
-                    count++;
-                    computer();
-                }
-                win();
-                Draw();
-            }
-        });
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (P1 && btn2.getText().equals("")){
-                    btn2.setText("X");
-                    P1 = false;
-                    P2 = true;
-                    count++;
-                    computer();
-                }
-                win();
-                Draw();
-            }
-        });
-        btn3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (P1 && btn3.getText().equals("")){
-                    btn3.setText("X");
-                    P1 = false;
-                    P2 = true;
-                    count++;
-                    computer();
-                }
-                win();
-                Draw();
-            }
-        });
-        btn4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (P1 && btn4.getText().equals("")){
-                    btn4.setText("X");
-                    P1 = false;
-                    P2 = true;
-                    count++;
-                    computer();
-                }
-                win();
-                Draw();
-            }
-        });
-        btn5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (P1 && btn5.getText().equals("")){
-                    btn5.setText("X");
-                    P1 = false;
-                    P2 = true;
-                    count++;
-                    computer();
-                }
-                win();
-                Draw();
-            }
-        });
-        btn6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (P1 && btn6.getText().equals("")){
-                    btn6.setText("X");
-                    P1 = false;
-                    P2 = true;
-                    count++;
-                    computer();
-                }
-                win();
-                Draw();
-            }
-        });
-        btn7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (P1 && btn7.getText().equals("")){
-                    btn7.setText("X");
-                    P1 = false;
-                    P2 = true;
-                    count++;
-                    computer();
-                }
-                win();
-                Draw();
-            }
-        });
-        btn8.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (P1 && btn8.getText().equals("")){
-                    btn8.setText("X");
-                    P1 = false;
-                    P2 = true;
-                    count++;
-                    computer();
-                }
-                win();
-                Draw();
-            }
-        });
-        btn9.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (P1 && btn9.getText().equals("")){
-                    btn9.setText("X");
-                    P1 = false;
-                    P2 = true;
-                    count++;
-                    computer();
-                }
-                win();
-                Draw();
-            }
-        });
         btnreset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -207,162 +93,131 @@ public class SinglePlayerActivity extends AppCompatActivity {
             }
         });
     }
+
     private void computer() {
-        if (P2){
-            rand();
-            switch (num) {
-                case 1:
-                    if (btn1.getText().equals("")){
-                        btn1.setText("O");
-                        P1 =true;
-                        count++;
-                    }
-                    else if (count < 9) {
-                        computer();
-                    }
-                    break;
-                case 2:
-                    if (btn2.getText().equals("")){
-                        btn2.setText("O");
-                        P1 =true;
-                        count++;
-                    }
-                    else if (count < 9) {
-                        computer();
-                    }
-                    break;
-                case 3:
-                    if (btn3.getText().equals("")){
-                        btn3.setText("O");
-                        P1 =true;
-                        count++;
-                    }
-                    else if (count < 9) {
-                        computer();
-                    }
-                    break;
-                case 4:
-                    if (btn4.getText().equals("")){
-                        btn4.setText("O");
-                        P1 =true;
-                        count++;
-                    }
-                    else if (count < 9) {
-                        computer();
-                    }
-                    break;
-                case 5:
-                    if (btn5.getText().equals("")){
-                        btn5.setText("O");
-                        P1 =true;
-                        count++;
-                    }
-                    else if (count < 9) {
-                        computer();
-                    }
-                    break;
-                case 6:
-                    if (btn6.getText().equals("")){
-                        btn6.setText("O");
-                        P1 =true;
-                        count++;
-                    }
-                    else if (count < 9) {
-                        computer();
-                    }
-                    break;
-                case 7:
-                    if (btn7.getText().equals("")){
-                        btn7.setText("O");
-                        P1 =true;
-                        count++;
-                    }
-                    else if (count < 9) {
-                        computer();
-                    }
-                    break;
-                case 8:
-                    if (btn8.getText().equals("")){
-                        btn8.setText("O");
-                        P1 =true;
-                        count++;
-                    }
-                    else if (count < 9) {
-                        computer();
-                    }
-                    break;
-                case 9:
-                    if (btn9.getText().equals("")){
-                        btn9.setText("O");
-                        P1 =true;
-                        count++;
-                    }
-                    else if (count < 9) {
-                        computer();
-                    }
-                    break;
+        if (P2) {
+            int i = findBestMove(0);
+            if (btn[i].getText().equals("")) {
+                btn[i].setText("O");
+                P1 = true;
+                P2 = false;
+                count++;
+                win();
+                Draw();
+            } else {
+                computer();
             }
+
         }
     }
-    private void rand() {
-        Random random = new Random();
-        num = random.nextInt(9)+1;
+
+    private int findBestMove(int i) {
+        for (; i < 3; i++) {
+            if (btn[3 * i].getText().equals(btn[1 + 3 * i].getText()) && !btn[3 * i].getText().equals("") || btn[2 + 3 * i].getText().equals(btn[1 + 3 * i].getText()) && !btn[2 + 3 * i].getText().equals("") || btn[3 * i].getText().equals(btn[2 + 3 * i].getText()) && !btn[3 * i].getText().equals("")) {
+                if (!btn[1 + 3 * i].getText().equals("")) {
+                    if (btn[2 + 3 * i].getText().equals("")) {
+                        return 2 + 3 * i;
+                    } else if (btn[3 * i].getText().equals("")) {
+                        return 3 * i;
+                    }
+                } else {
+                    return 1 + 3 * i;
+                }
+            } else if (btn[i].getText().equals(btn[3 + i].getText()) && !btn[3 + i].getText().equals("") || btn[3 + i].getText().equals(btn[6 + i].getText()) && !btn[3 + i].getText().equals("") || btn[i].getText().equals(btn[6 + i].getText()) && !btn[i].getText().equals("")) {
+                if (!btn[3 + i].getText().equals("")) {
+                    if (btn[6 + i].getText().equals("")) {
+                        return 6 + i;
+                    } else if (btn[i].getText().equals("")) {
+                        return i;
+                    }
+                } else {
+                    return 3 + i;
+                }
+            } else if (btn[0].getText().equals(btn[4].getText()) && !btn[4].getText().equals("") || btn[4].getText().equals(btn[8].getText()) && !btn[4].getText().equals("") || btn[8].getText().equals(btn[0].getText()) && !btn[0].getText().equals("")) {
+                if (!btn[4].getText().equals("")) {
+                    if (btn[8].getText().equals("")) {
+                        return 8;
+                    } else if (btn[0].getText().equals("")) {
+                        return 0;
+                    }
+                } else {
+                    return 4;
+                }
+            } else if (btn[2].getText().equals(btn[4].getText()) && !btn[4].getText().equals("") || btn[4].getText().equals(btn[6].getText()) && !btn[4].getText().equals("") || btn[6].getText().equals(btn[2].getText()) && !btn[6].getText().equals("")) {
+                if (!btn[4].getText().equals("")) {
+                    if (btn[6].getText().equals("")) {
+                        return 6;
+                    } else if (btn[2].getText().equals("")) {
+                        return 2;
+                    }
+                } else {
+                    return 4;
+                }
+            } else {
+                findBestMove(i + 1);
+            }
+        }
+        return randomMove();
     }
+
+    private int randomMove() {
+        int ran = rand();
+        if (btn[ran].getText().equals("")) {
+            return ran;
+        } else {
+            randomMove();
+        }
+        return ran;
+    }
+
+    private int rand() {
+        Random random = new Random();
+        return random.nextInt(9);
+    }
+
     private void Draw() {
-        if (count == 9){
-            Toast.makeText(this,"Draw",Toast.LENGTH_SHORT).show();
+        if (count == 9) {
+            Toast.makeText(this, "Draw", Toast.LENGTH_SHORT).show();
             Clear();
         }
     }
+
     private void win() {
-        if ((btn1.getText().equals(btn2.getText()) && btn2.getText().equals(btn3.getText()) && btn3.getText().equals("X")) || (btn4.getText().equals(btn5.getText()) && btn5.getText().equals(btn6.getText()) && btn6.getText().equals("X")) || (btn7.getText().equals(btn8.getText()) && btn8.getText().equals(btn9.getText()) && btn9.getText().equals("X")) || (btn1.getText().equals(btn4.getText()) && btn4.getText().equals(btn7.getText()) && btn7.getText().equals("X")) || (btn2.getText().equals(btn5.getText()) && btn5.getText().equals(btn8.getText()) && btn8.getText().equals("X")) || (btn3.getText().equals(btn6.getText()) && btn6.getText().equals(btn9.getText()) && btn9.getText().equals("X")) || (btn1.getText().equals(btn5.getText()) && btn5.getText().equals(btn9.getText()) && btn9.getText().equals("X")) || (btn3.getText().equals(btn5.getText()) && btn5.getText().equals(btn7.getText()) && btn7.getText().equals("X"))) {
+        if (btn[0].getText().equals(btn[1].getText()) && btn[1].getText().equals(btn[2].getText()) && btn[2].getText().equals("X") || btn[3].getText().equals(btn[4].getText()) && btn[4].getText().equals(btn[5].getText()) && btn[5].getText().equals("X") || btn[6].getText().equals(btn[7].getText()) && btn[7].getText().equals(btn[8].getText()) && btn[8].getText().equals("X") || btn[0].getText().equals(btn[3].getText()) && btn[3].getText().equals(btn[6].getText()) && btn[6].getText().equals("X") || btn[1].getText().equals(btn[4].getText()) && btn[4].getText().equals(btn[7].getText()) && btn[7].getText().equals("X") || btn[2].getText().equals(btn[5].getText()) && btn[5].getText().equals(btn[8].getText()) && btn[8].getText().equals("X") || btn[0].getText().equals(btn[4].getText()) && btn[4].getText().equals(btn[8].getText()) && btn[8].getText().equals("X") || btn[2].getText().equals(btn[4].getText()) && btn[4].getText().equals(btn[6].getText()) && btn[6].getText().equals("X")) {
             X++;
             Toast.makeText(this, p + " Won!", Toast.LENGTH_SHORT).show();
             stat1 = p + ": " + X;
             txt1.setText(stat1);
             Clear();
-        }
-        if ((btn1.getText().equals(btn2.getText()) && btn2.getText().equals(btn3.getText()) && btn3.getText().equals("O")) || (btn4.getText().equals(btn5.getText()) && btn5.getText().equals(btn6.getText()) && btn6.getText().equals("O")) || (btn7.getText().equals(btn8.getText()) && btn8.getText().equals(btn9.getText()) && btn9.getText().equals("O")) || (btn1.getText().equals(btn4.getText()) && btn4.getText().equals(btn7.getText()) && btn7.getText().equals("O")) || (btn2.getText().equals(btn5.getText()) && btn5.getText().equals(btn8.getText()) && btn8.getText().equals("O")) || (btn3.getText().equals(btn6.getText()) && btn6.getText().equals(btn9.getText()) && btn9.getText().equals("O")) || (btn1.getText().equals(btn5.getText()) && btn5.getText().equals(btn9.getText()) && btn9.getText().equals("O")) || (btn3.getText().equals(btn5.getText()) && btn5.getText().equals(btn7.getText()) && btn7.getText().equals("O"))) {
+        } else if (btn[0].getText().equals(btn[1].getText()) && btn[1].getText().equals(btn[2].getText()) && btn[2].getText().equals("O") || btn[3].getText().equals(btn[4].getText()) && btn[4].getText().equals(btn[5].getText()) && btn[5].getText().equals("O") || btn[6].getText().equals(btn[7].getText()) && btn[7].getText().equals(btn[8].getText()) && btn[8].getText().equals("O") || btn[0].getText().equals(btn[3].getText()) && btn[3].getText().equals(btn[6].getText()) && btn[6].getText().equals("O") || btn[1].getText().equals(btn[4].getText()) && btn[4].getText().equals(btn[7].getText()) && btn[7].getText().equals("O") || btn[2].getText().equals(btn[5].getText()) && btn[5].getText().equals(btn[8].getText()) && btn[8].getText().equals("O") || btn[0].getText().equals(btn[4].getText()) && btn[4].getText().equals(btn[8].getText()) && btn[8].getText().equals("O") || btn[2].getText().equals(btn[4].getText()) && btn[4].getText().equals(btn[6].getText()) && btn[6].getText().equals("O")) {
             Y++;
             Toast.makeText(this, "Computer" + " Won!", Toast.LENGTH_SHORT).show();
-            stat2 =  "Computer : " + Y;
+            stat2 = "Computer : " + Y;
             txt2.setText(stat2);
             Clear();
         }
     }
+
     private void Reset() {
-        btn1.setText("");
-        btn2.setText("");
-        btn3.setText("");
-        btn4.setText("");
-        btn5.setText("");
-        btn6.setText("");
-        btn7.setText("");
-        btn8.setText("");
-        btn9.setText("");
-        count = 0;
+        Clear();
         txt1.setText(initp);
         txt2.setText(initcomp);
-        P1 = true;
         X = 0;
         Y = 0;
     }
+
     private void Clear() {
-        btn1.setText("");
-        btn2.setText("");
-        btn3.setText("");
-        btn4.setText("");
-        btn5.setText("");
-        btn6.setText("");
-        btn7.setText("");
-        btn8.setText("");
-        btn9.setText("");
+        for (int i = 0; i < 9; i++) {
+            btn[i].setText("");
+        }
         count = 0;
         P1 = true;
+        P2 = false;
     }
+
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(SinglePlayerActivity.this,PlayerNameActivity.class);
+        Intent intent = new Intent(SinglePlayerActivity.this, PlayerNameActivity.class);
         startActivity(intent);
         finish();
     }
