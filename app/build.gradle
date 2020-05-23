@@ -2,13 +2,13 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion '30.0.0 rc1'
+    buildToolsVersion "29.0.3"
     defaultConfig {
         applicationId "com.vs.tictactoe"
         minSdkVersion 16
         targetSdkVersion 29
-        versionCode 5
-        versionName "2.3"
+        versionCode 6
+        versionName "2.4"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -28,5 +28,5 @@ dependencies {
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    implementation 'com.google.android.gms:play-services-ads:19.0.1'
+    implementation 'com.google.android.gms:play-services-ads:19.1.0'
 }
