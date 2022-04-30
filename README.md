@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <div align="center">
-  <a href="https://github.com/VsTechMobile/Tic-Tac-Toe">
-    <img src="https://raw.githubusercontent.com/VsTechMobile/Tic-Tac-Toe/master/app/src/main/res/drawable/img.png" alt="Logo" width="80" height="80">
+  <a href="https://github.com/VsTechDev/Tic-Tac-Toe">
+    <img src="https://raw.githubusercontent.com/VsTechDev/Tic-Tac-Toe/master/app/src/main/res/drawable/img.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Tic Tac Toe</h3>
@@ -9,32 +9,32 @@
   <p align="center">
     A simple app to play Tic Tac Toe with other person or a computer
     <br />
-    <a href="https://github.com/VsTechMobile/Tic-Tac-Toe"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/VsTechDev/Tic-Tac-Toe"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://play.google.com/store/apps/details?id=com.vs.tictactoe">Download</a>
     ·
-    <a href="https://github.com/VsTechMobile/Tic-Tac-Toe/issues">Report Bug</a>
+    <a href="https://github.com/VsTechDev/Tic-Tac-Toe/issues">Report Bug</a>
     ·
-    <a href="https://github.com/VsTechMobile/Tic-Tac-Toe/issues">Request Feature</a>
+    <a href="https://github.com/VsTechDev/Tic-Tac-Toe/issues">Request Feature</a>
   </p>
 </div>
 
 <p align="center">
-  <a herf="https://github.com/VsTechMobile/Tic-Tac-Toe/graphs/contributors">
-    <img src="https://img.shields.io/github/contributors/VsTechMobile/Tic-Tac-Toe" />
+  <a herf="https://github.com/VsTechDev/Tic-Tac-Toe/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors/VsTechDev/Tic-Tac-Toe" />
   </a>
-  <a herf="https://github.com/VsTechMobile/Tic-Tac-Toe/network/members">
-    <img src="https://img.shields.io/github/forks/VsTechMobile/Tic-Tac-Toe" />
+  <a herf="https://github.com/VsTechDev/Tic-Tac-Toe/network/members">
+    <img src="https://img.shields.io/github/forks/VsTechDev/Tic-Tac-Toe" />
   </a>
-  <a herf="https://github.com/VsTechMobile/Tic-Tac-Toe/stargazers">
-    <img src="https://img.shields.io/github/stars/VsTechMobile/Tic-Tac-Toe" />
+  <a herf="https://github.com/VsTechDev/Tic-Tac-Toe/stargazers">
+    <img src="https://img.shields.io/github/stars/VsTechDev/Tic-Tac-Toe" />
   </a>
-  <a herf="https://github.com/VsTechMobile/Tic-Tac-Toe/issues">
-    <img src="https://img.shields.io/github/issues/VsTechMobile/Tic-Tac-Toe" />
+  <a herf="https://github.com/VsTechDev/Tic-Tac-Toe/issues">
+    <img src="https://img.shields.io/github/issues/VsTechDev/Tic-Tac-Toe" />
   </a>
-  <a herf="https://github.com/VsTechMobile/Tic-Tac-Toe/blob/master/LICENSE.txt">
-    <img src="https://img.shields.io/github/license/VsTechMobile/Tic-Tac-Toe" />
+  <a herf="https://github.com/VsTechDev/Tic-Tac-Toe/blob/master/LICENSE.txt">
+    <img src="https://img.shields.io/github/license/VsTechDev/Tic-Tac-Toe" />
   </a>
   <a herf="https://play.google.com/store/apps/details?id=com.vs.tictactoe">
     <img src="https://img.shields.io/endpoint?color=blue&url=https%3A%2F%2Fplayshields.herokuapp.com%2Fplay%3Fi%3Dcom.vs.tictactoe%26l%3DPlay%2520Store%26m%3D%24installs" />
