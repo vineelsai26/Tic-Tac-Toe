@@ -29,6 +29,9 @@ public class SinglePlayerActivity extends AppCompatActivity {
     public String initp, initcomp;
     public String stat1, stat2;
     private Button[] btn = new Button[9];
+    private String mode;
+
+    private static final int MAX_DEPTH = 6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,14 +45,20 @@ public class SinglePlayerActivity extends AppCompatActivity {
                 .monitor();
         AppRate.showRateDialogIfMeetsConditions(this);
 
+        mode = getIntent().getStringExtra("mode");
+        for(int i=0; i < 9; i++)
+        {
+            String ButtonId = "bt" + i;
+            int resId = getResources().getIdentifier(ButtonId, "id", getPackageName());
+            btn[i] = findViewById(resId);
+        }
+
         AdView mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
         P1 = true;
         for (int i = 0; i < 9; i++) {
-            String ButtonId = "bt" + i;
-            int resId = getResources().getIdentifier(ButtonId, "id", getPackageName());
-            btn[i] = findViewById(resId);
+
             final int finalI = i;
             btn[i].setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -96,7 +105,18 @@ public class SinglePlayerActivity extends AppCompatActivity {
 
     private void computer() {
         if (P2) {
-            int i = findBestMove(0);
+            int i;
+            // run code depend on choice of a player
+            if(mode.equals("classic"))
+                 i = findBestMove(0);
+
+            else {
+                Button[] b = new Button[9];
+                System.arraycopy(btn, 0, b, 0, 9);
+                i = aiBestMove(b);
+
+
+            }
             if (btn[i].getText().equals("")) {
                 btn[i].setText("O");
                 P1 = true;
@@ -106,11 +126,12 @@ public class SinglePlayerActivity extends AppCompatActivity {
                 Draw();
             } else {
                 computer();
-            }
-
+                }
         }
     }
 
+
+    //return cell where computer play
     private int findBestMove(int i) {
         for (; i < 3; i++) {
             if (btn[3 * i].getText().equals(btn[1 + 3 * i].getText()) && !btn[3 * i].getText().equals("") || btn[2 + 3 * i].getText().equals(btn[1 + 3 * i].getText()) && !btn[2 + 3 * i].getText().equals("") || btn[3 * i].getText().equals(btn[2 + 3 * i].getText()) && !btn[3 * i].getText().equals("")) {
@@ -181,6 +202,9 @@ public class SinglePlayerActivity extends AppCompatActivity {
             Clear();
         }
     }
+    private boolean AiDraw() {
+        return count == 9;
+    }
 
     private void win() {
         if (btn[0].getText().equals(btn[1].getText()) && btn[1].getText().equals(btn[2].getText()) && btn[2].getText().equals("X") || btn[3].getText().equals(btn[4].getText()) && btn[4].getText().equals(btn[5].getText()) && btn[5].getText().equals("X") || btn[6].getText().equals(btn[7].getText()) && btn[7].getText().equals(btn[8].getText()) && btn[8].getText().equals("X") || btn[0].getText().equals(btn[3].getText()) && btn[3].getText().equals(btn[6].getText()) && btn[6].getText().equals("X") || btn[1].getText().equals(btn[4].getText()) && btn[4].getText().equals(btn[7].getText()) && btn[7].getText().equals("X") || btn[2].getText().equals(btn[5].getText()) && btn[5].getText().equals(btn[8].getText()) && btn[8].getText().equals("X") || btn[0].getText().equals(btn[4].getText()) && btn[4].getText().equals(btn[8].getText()) && btn[8].getText().equals("X") || btn[2].getText().equals(btn[4].getText()) && btn[4].getText().equals(btn[6].getText()) && btn[6].getText().equals("X")) {
@@ -196,6 +220,16 @@ public class SinglePlayerActivity extends AppCompatActivity {
             txt2.setText(stat2);
             Clear();
         }
+    }
+
+
+    private int winAI(Button[] b) {
+        if (b[0].getText().equals(b[1].getText()) && b[1].getText().equals(b[2].getText()) && b[2].getText().equals("X") || b[3].getText().equals(b[4].getText()) && b[4].getText().equals(b[5].getText()) && b[5].getText().equals("X") || b[6].getText().equals(b[7].getText()) && b[7].getText().equals(b[8].getText()) && b[8].getText().equals("X") || b[0].getText().equals(b[3].getText()) && b[3].getText().equals(b[6].getText()) && b[6].getText().equals("X") || b[1].getText().equals(b[4].getText()) && b[4].getText().equals(b[7].getText()) && b[7].getText().equals("X") || b[2].getText().equals(b[5].getText()) && b[5].getText().equals(b[8].getText()) && b[8].getText().equals("X") || b[0].getText().equals(b[4].getText()) && b[4].getText().equals(b[8].getText()) && b[8].getText().equals("X") || b[2].getText().equals(b[4].getText()) && b[4].getText().equals(b[6].getText()) && b[6].getText().equals("X")) {
+           return -10;
+        } else if (b[0].getText().equals(b[1].getText()) && b[1].getText().equals(b[2].getText()) && b[2].getText().equals("O") || b[3].getText().equals(b[4].getText()) && b[4].getText().equals(b[5].getText()) && b[5].getText().equals("O") || b[6].getText().equals(b[7].getText()) && b[7].getText().equals(b[8].getText()) && b[8].getText().equals("O") || b[0].getText().equals(b[3].getText()) && b[3].getText().equals(b[6].getText()) && b[6].getText().equals("O") || b[1].getText().equals(b[4].getText()) && b[4].getText().equals(b[7].getText()) && b[7].getText().equals("O") || b[2].getText().equals(b[5].getText()) && b[5].getText().equals(b[8].getText()) && b[8].getText().equals("O") || b[0].getText().equals(b[4].getText()) && b[4].getText().equals(b[8].getText()) && b[8].getText().equals("O") || b[2].getText().equals(b[4].getText()) && b[4].getText().equals(b[6].getText()) && b[6].getText().equals("O")) {
+           return 10;
+        }
+        return 0;
     }
 
     private void Reset() {
@@ -221,4 +255,72 @@ public class SinglePlayerActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
+    private boolean isMovesLeft(Button[] b)
+    {
+        for(int i=0;i<9;i++)
+            if(b[i].getText().equals(""))
+                return true;
+        return false;
+    }
+
+    private int miniMax(Button[] b, int depth, boolean aiTurn)
+    {
+      //  int score = evaluateBoard(b);
+        if (winAI(b) != 0 || !isMovesLeft(b))
+            return evaluateBoard(b);
+
+        if(aiTurn)
+        {
+            int highestVal = -9999;
+            for(int i=0; i < 9; i++)
+            {
+                if(b[i].getText().equals(""))
+                {
+                    b[i].setText("O");
+                    highestVal =Math.max(highestVal, miniMax(b,depth - 1,false));
+                    b[i].setText("");
+                }
+            }
+
+            return highestVal;
+
+        }
+        else
+        {
+            int highestVal = 9999;
+            for(int i=0; i < 9; i++) {
+                if (b[i].getText().equals("")) {
+                    b[i].setText("X");
+                    highestVal = Math.min(highestVal, miniMax(b, depth - 1, true));
+                    b[i].setText("");
+                }
+            }
+            return highestVal;
+            }
+    }
+
+    private int aiBestMove(Button[] b)
+    {
+        int move = -1;
+        int bestValue = -9999;
+
+        for(int i=0; i < 9; i++) {
+            if (b[i].getText().equals("")) {
+                b[i].setText("O");
+                int moveValue = miniMax(b, MAX_DEPTH, false);
+                b[i].setText("");
+                if (moveValue >= bestValue) {
+                    move = i;
+                    bestValue = moveValue;
+                }
+            }
+        }
+        return move;
+    }
+    private int evaluateBoard(Button[] b) {
+        return winAI(b);
+
+    }
+
 }
