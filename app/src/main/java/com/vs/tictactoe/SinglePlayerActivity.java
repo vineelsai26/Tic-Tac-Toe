@@ -202,9 +202,7 @@ public class SinglePlayerActivity extends AppCompatActivity {
             Clear();
         }
     }
-    private boolean AiDraw() {
-        return count == 9;
-    }
+
 
     private void win() {
         if (btn[0].getText().equals(btn[1].getText()) && btn[1].getText().equals(btn[2].getText()) && btn[2].getText().equals("X") || btn[3].getText().equals(btn[4].getText()) && btn[4].getText().equals(btn[5].getText()) && btn[5].getText().equals("X") || btn[6].getText().equals(btn[7].getText()) && btn[7].getText().equals(btn[8].getText()) && btn[8].getText().equals("X") || btn[0].getText().equals(btn[3].getText()) && btn[3].getText().equals(btn[6].getText()) && btn[6].getText().equals("X") || btn[1].getText().equals(btn[4].getText()) && btn[4].getText().equals(btn[7].getText()) && btn[7].getText().equals("X") || btn[2].getText().equals(btn[5].getText()) && btn[5].getText().equals(btn[8].getText()) && btn[8].getText().equals("X") || btn[0].getText().equals(btn[4].getText()) && btn[4].getText().equals(btn[8].getText()) && btn[8].getText().equals("X") || btn[2].getText().equals(btn[4].getText()) && btn[4].getText().equals(btn[6].getText()) && btn[6].getText().equals("X")) {
@@ -221,8 +219,7 @@ public class SinglePlayerActivity extends AppCompatActivity {
             Clear();
         }
     }
-
-
+    //checking if player or computer won
     private int winAI(Button[] b) {
         if (b[0].getText().equals(b[1].getText()) && b[1].getText().equals(b[2].getText()) && b[2].getText().equals("X") || b[3].getText().equals(b[4].getText()) && b[4].getText().equals(b[5].getText()) && b[5].getText().equals("X") || b[6].getText().equals(b[7].getText()) && b[7].getText().equals(b[8].getText()) && b[8].getText().equals("X") || b[0].getText().equals(b[3].getText()) && b[3].getText().equals(b[6].getText()) && b[6].getText().equals("X") || b[1].getText().equals(b[4].getText()) && b[4].getText().equals(b[7].getText()) && b[7].getText().equals("X") || b[2].getText().equals(b[5].getText()) && b[5].getText().equals(b[8].getText()) && b[8].getText().equals("X") || b[0].getText().equals(b[4].getText()) && b[4].getText().equals(b[8].getText()) && b[8].getText().equals("X") || b[2].getText().equals(b[4].getText()) && b[4].getText().equals(b[6].getText()) && b[6].getText().equals("X")) {
            return -10;
@@ -255,7 +252,7 @@ public class SinglePlayerActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-
+    //checking if is an available move
     private boolean isMovesLeft(Button[] b)
     {
         for(int i=0;i<9;i++)
@@ -264,12 +261,12 @@ public class SinglePlayerActivity extends AppCompatActivity {
         return false;
     }
 
+
     private int miniMax(Button[] b, int depth, boolean aiTurn)
     {
-      //  int score = evaluateBoard(b);
-        if (winAI(b) != 0 || !isMovesLeft(b))
+            if (winAI(b) != 0 || !isMovesLeft(b))
             return evaluateBoard(b);
-
+        //checking who is turn
         if(aiTurn)
         {
             int highestVal = -9999;
@@ -300,6 +297,7 @@ public class SinglePlayerActivity extends AppCompatActivity {
             }
     }
 
+    //select the best move for the computer
     private int aiBestMove(Button[] b)
     {
         int move = -1;
