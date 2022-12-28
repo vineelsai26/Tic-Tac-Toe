@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SelectMode">
+
+    <Button
+        android:id="@+id/btnClassic"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Classic mode"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnUnbeatable"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/button_round"
+        android:textColor="@android:color/background_light"
+        android:textSize="24sp"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:id="@+id/btnUnbeatable"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Unbeatable mode"
+        android:textColor="@android:color/background_light"
+        android:textSize="24sp"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnClassic"
+        android:background="@drawable/button_round"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtVselect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="128dp"
+        android:text="Select single mode"
+        app:layout_constraintBottom_toTopOf="@+id/btnClassic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="24sp"/>
+
+    <TextView
+        android:id="@+id/txtVinfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="At Unbeatable mode you are playing against AI which can calculate all possible moves making you not able to beat them. Try your skill to get a DRAW "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnUnbeatable"
+        app:layout_constraintVertical_bias="0.509"
+        />
+
+    <ImageView
+        android:id="@+id/imgInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toTopOf="@+id/txtVinfo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@android:drawable/ic_dialog_info" />
+</androidx.constraintlayout.widget.ConstraintLayout>
